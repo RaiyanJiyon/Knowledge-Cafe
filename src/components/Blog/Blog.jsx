@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Blog = ({ blog }) => {
   console.log(blog);
   const {
@@ -61,5 +63,9 @@ const Blog = ({ blog }) => {
     </div>
   );
 };
+
+Blog.propTypes = {
+  blog: PropTypes.object.isRequired
+}
 
 export default Blog;
