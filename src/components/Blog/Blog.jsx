@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-const Blog = ({ blog }) => {
-  console.log(blog);
+const Blog = ({ blog, handleReadingTime }) => {
+  // console.log(blog);
   const {
     cover,
     title,
@@ -30,6 +30,7 @@ const Blog = ({ blog }) => {
           <div className="flex items-center gap-2">
             <h3 className="text-lg text-[#11111199]">{reading_time} minute read</h3>
             <svg
+              onClick={() => handleReadingTime(reading_time)}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -65,7 +66,8 @@ const Blog = ({ blog }) => {
 };
 
 Blog.propTypes = {
-  blog: PropTypes.object.isRequired
+  blog: PropTypes.object.isRequired,
+  handleReadingTime: PropTypes.func.isRequired
 }
 
 export default Blog;
