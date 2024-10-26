@@ -48,7 +48,7 @@ const Blog = ({ blog }) => {
 
         <h2 className="card-title text-4xl">{title}</h2>
 
-        <div className="flex justify-start">
+        <div className="flex lg:w-[30%] text-[#11111199]">
         {
             hashtags.map((hash, index) => (
                 <p key={index}>#{hash}</p>

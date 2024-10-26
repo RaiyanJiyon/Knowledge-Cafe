@@ -9,7 +9,7 @@ function App() {
     <>
       <Header></Header>
 
-      <main className='flex gap-6 w-11/12 mx-auto'>
+      <main className='flex flex-col md:flex-row gap-6 w-11/12 mx-auto mb-10'>
         <Blogs></Blogs>
         <Bookmark></Bookmark>
       </main>
