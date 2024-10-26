@@ -6,21 +6,26 @@ import Header from './components/Header/Header'
 
 function App() {
   const [readingTime, setReadingTime] = useState(0);
+  const [bookmarks, setBookmarks] = useState([]);
 
   const handleReadingTime = (time) => {
-    console.log('Reading Time Added', time);
     const totalTime = readingTime + time;
     setReadingTime(totalTime);
-    console.log(totalTime);
+  }
+
+  const handleBookmark = (title) => {
+    if (!bookmarks.includes(title)) {
+      setBookmarks([...bookmarks, title]);
+    }
   }
 
   return (
     <>
       <Header></Header>
 
-      <main className='flex flex-col md:flex-row gap-6 w-11/12 mx-auto mb-10'>
-        <Blogs handleReadingTime={handleReadingTime}></Blogs>
-        <Bookmark readingTime={readingTime}></Bookmark>
+      <main className='flex flex-col-reverse md:flex-row gap-6 w-11/12 mx-auto mb-10'>
+        <Blogs handleReadingTime={handleReadingTime} handleBookmark={handleBookmark}></Blogs>
+        <Bookmark readingTime={readingTime} bookmarks={bookmarks}></Bookmark>
       </main>
     </>
   )

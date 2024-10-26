@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Blog = ({ blog, handleReadingTime }) => {
-  // console.log(blog);
+const Blog = ({ blog, handleReadingTime, handleBookmark }) => {
   const {
     cover,
     title,
@@ -11,6 +10,7 @@ const Blog = ({ blog, handleReadingTime }) => {
     reading_time,
     hashtags,
   } = blog;
+
   return (
     <div className="card rounded-lg">
       <figure className="">
@@ -30,7 +30,7 @@ const Blog = ({ blog, handleReadingTime }) => {
           <div className="flex items-center gap-2">
             <h3 className="text-lg text-[#11111199]">{reading_time} minute read</h3>
             <svg
-              onClick={() => handleReadingTime(reading_time)}
+              onClick={() => handleBookmark(title)}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -50,15 +50,15 @@ const Blog = ({ blog, handleReadingTime }) => {
         <h2 className="card-title text-4xl">{title}</h2>
 
         <div className="flex lg:w-[30%] text-[#11111199]">
-        {
+          {
             hashtags.map((hash, index) => (
-                <p key={index}>#{hash}</p>
+              <p key={index}>#{hash}</p>
             ))
-        }
+          }
         </div>
 
         <div>
-        <button className="text-[#6047EC] underline">Mark as read</button>
+          <button onClick={() => handleReadingTime(reading_time)} className="text-[#6047EC] underline">Mark as read</button>
         </div>
       </div>
     </div>
@@ -67,7 +67,8 @@ const Blog = ({ blog, handleReadingTime }) => {
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
-  handleReadingTime: PropTypes.func.isRequired
+  handleReadingTime: PropTypes.func.isRequired,
+  handleBookmark: PropTypes.func.isRequired,
 }
 
 export default Blog;
