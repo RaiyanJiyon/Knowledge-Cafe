@@ -10,13 +10,12 @@ function App() {
   const [bookmarks, setBookmarks] = useState([]);
 
   const handleReadingTime = (time) => {
-    const totalTime = readingTime + time;
-    setReadingTime(totalTime);
+    setReadingTime((prevTime) => prevTime + time);
   }
 
   const handleBookmark = (title) => {
     if (!bookmarks.includes(title)) {
-      setBookmarks([...bookmarks, title]);
+      setBookmarks((prevBookmarks) => [...prevBookmarks, title])
     }
   }
 
